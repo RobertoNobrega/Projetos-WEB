@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1"> <!-- A versão do JPA que está sendo configurada é a 2.1  -->
+	
+	<!-- No arquivo persistence.xml, será feita as configurações para Persistência de Dados, para
+	     o Gerenciador de Banco de Dados para o MySQL.
+	-->
+	
+	<persistence-unit name="exemplo_aplicacao_jpa" transaction-type="RESOURCE_LOCAL">  <!--  As configurações estarão na tag persistence-unit. No atributo name, ficará
+	    um nome criado pelo programador (neste exemplo, será exemplo_aplicacao_jpa, mas poderia ser um outro nome).  Em transaction-type="RESOURCE_LOCAL" , informa que
+	    as transações serão gerenciadas manualmente. -->
+		<properties> <!--  Colocando as propriedades deste persistence-unit. -->
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3307/Loja1?useSSL=false&amp;serverTimezone=UTC" /> <!--  Nesta tag property, em name, está recebendo a url do Banco de
+				Dados. Em value, está recebendo uma String, para que ocorra a conexão com o Banco de Dados MySQL. Neste exemplo, a string recebe o IP da Máquina (nesse
+				caso, é o IP Local, o localhost; porém poderia passar o IP de uma Máquina que estivesse na internet), o número da porta que o MySQL vai atender (aqui,
+				será o 3307, porque mudei o número no próprio XAMPP) o nome da base de dados que iremos trabalhar (que nesse caso será a base chamada Loja1). OBS: Está
+				colocando o ponto de interrogação, pois será para inicializar alguns atributos. useSSL está recebendo o valor false, pois não iremos mexer com SSL . Em
+				&amp; é para que isso funcione na maioria dos computadores. Em serverTimezone=UTC , o prof não disse pra que é, mas foi colocado assim. -->
+
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> <!-- Aqui, está se referindo ao driver do MySQL.  -->
+			<property name="javax.persistence.jdbc.user" value="root" /> <!-- Aqui, está se referindo ao usuário do banco. Em value, foi definido que
+			esse usuário será o root.  -->
+			<property name="javax.persistence.jdbc.password" value="" /> <!-- Aqui, está se referindo a senha. Em value, foi definida que a senha será vazia, pois
+			como estaremos usando o Xampp, pois essa é a senha padrão de root do Xampp (ou seja, vazio). -->
+
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- Aqui, serve para gerar automaticamente o Banco de Dados. Em value, está recebendo update, ou seja,
+			quando a aplicação for executada, automaticamente o Banco de Dados será atualizado, conforme as classes de domínio da aplicação (EX: Na classe Pessoa, se por acaso
+			foi inserida um novo atributo; no momento da execução da aplicação, no Banco de Dados, será criada uma nova coluna na tabela Pessoa do Banco de Dados). 
+			OBS: Em value, poderia também receber o valor create , porém, toda vez que a aplicação for executada, o Banco de Dados será "apagado" e criado novamente. -->
+
+			<!-- https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/dialect/package-summary.html -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" /> <!-- Aqui, estamos tratando do dialeto do MySQL. Em value, por possuir o MySQL8Dialect,
+			 indica que está usando o dialeto que corresponde ao atual MySQL instalado no computador. Porém, isso pode dar problema em outros computadores que possuam o MySQL, pois
+			 o dialeto é diferente. Por isso, tem que ir no site  https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/dialect/package-summary.html   , para achar o dialeto
+			 que combina e funciona no MySQL que está instalado no computador.  -->
+		</properties>
+	</persistence-unit>
+</persistence>
