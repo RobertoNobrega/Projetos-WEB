@@ -15,11 +15,6 @@ import modelo.Pessoa;
 
 public class Programa1{
 	
-	public static void main(String[] args){  /* Método para Executar este Programa, intitulado de Programa1 */
-		Programa1 prog = new Programa1();
-		prog.executarPrograma();
-	}
-	
 	public void executarPrograma(){
 		boolean resposta = true;
 		System.out.println("\n\tPrograma, usando Java, Hibernate (Ferramenta de ORM), JPA, Maven, MySQL e XAMPP"
