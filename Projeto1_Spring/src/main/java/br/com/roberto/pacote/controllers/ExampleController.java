@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  *                Vai acessar o método get, ao qual irá exibir uma String na tela ( Hello World. ).
  *            http://localhost:8080/api/example/mensagem-principal
  *            	  Vai acessar o método mensagemPrincipal, ao qual irá exibir uma String na tela;
+ *	     OBS: O Plugin do Spring usado na IDE Eclipse, para construir esse projeto é o Spring Tools 3. 
  *	   Referência: https://medium.com/danielpadua/java-spring-boot-eclipse-7a1c4c364839
  * 
  */
