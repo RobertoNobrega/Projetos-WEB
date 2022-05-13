@@ -1,5 +1,9 @@
 package com.api.parkingcontrol.services;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +48,38 @@ public class ParkingSpotService {
 		//    Usaremos o ponto de injeção da classe ParkingSpotRepository.
 		return parkingSpotRepository.save(parkingSpotModel); // Gravando, no Banco de Dados, um registro da
 		// entidade (da classe ParkingSpotModel).
+	}
+
+	public boolean existsByLicensePlateCar(String licensePlateCar) {
+		// OBS: O Método existsByLicensePlateCar, precisa ser declarado no Repository (neste caso, na interface
+		// ParkingSpotRepository), para que posteriormente possa ser chamado em uma outra classe (neste caso, na
+		// classe ParkingSpotController).
+		return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);  // OBS: Percebi que, este método
+		// existsByLicensePlateCar, da interface ParkingSpotRepository, não está "implementada"; porém a interface
+		// ParkingSpotRepository herda da interface JpaRepository.
+	}
+
+	public boolean existsByParkingSpotNumber(String parkingSpotNumber) {
+		// OBS: A explicação deste método é similar ao do método existsByLicensePlateCar acima.
+		return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
+	}
+
+	public boolean existsByApartmentAndBlock(String apartment, String block) {
+		// OBS: A explicação deste método é similar ao do método existsByLicensePlateCar acima.
+		return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
+	}
+
+	public List<ParkingSpotModel> findAll(){  // Buscar e Retornar os "ParkingSpotModel".
+		return parkingSpotRepository.findAll();
+	}
+
+	public Optional<ParkingSpotModel> findById(UUID id){  // Retornando apenas um objeto ParkingSpotModel.
+		return parkingSpotRepository.findById(id);
+	}
+	
+	@Transactional   // Para usar, em método de gravação ou de exclusão.
+	public void delete(ParkingSpotModel parkingSpotModel){ // Apagando apenas um ParkingSpotModel.
+		parkingSpotRepository.delete(parkingSpotModel);
 	}
 	
 }

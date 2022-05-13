@@ -80,7 +80,9 @@ import org.springframework.web.bind.annotation.RestController;
  *      Menu Window -> Preferences -> No campo digite “font” -> Seleciona Colors and Font -> Na janela nova, busque
  *      pela pasta chamada Java. Clique Nela para expandir. Após isso, procure pela opção Java Editor Text Font. Clique
  *      nela e após isso, clique na opção de Edit. Vai aparecer uma janela. Nela vai ter a opção para alterar o tamanho
- *      de fonte. Escolha o tamanho e clique Apply e em seguida Apply and Close. 
+ *      de fonte. Escolha o tamanho e clique Apply e em seguida Apply and Close.
+ *      
+ *      Atalho: Botão do Windows + Tecla de "Pause Break" : Abre uma janela, informando as configurações básicas do Windows.
  */
 
 

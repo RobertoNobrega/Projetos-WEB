@@ -17,5 +17,8 @@ public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, U
 	// JpaRepository é um Bean.  Mas, se colocar a notação @Repository na interface ParkingSpotRepository, não fica errado e
 	// não dá erro, mas fica opcional colocar ou não.
 	
+	public boolean existsByLicensePlateCar(String licensePlateCar);  // Primeira Assinatura de Método.
+	public boolean existsByParkingSpotNumber(String parkingSpotNumber); // Segunda Assintura de Método.
+	public boolean existsByApartmentAndBlock(String apartment, String block); // Terceira Assinatura de Método.
 	
 }
