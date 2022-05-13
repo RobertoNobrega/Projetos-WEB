@@ -41,6 +41,12 @@ public class ParkingSpotService {
 	// algum problema na transação de deleção ou salvamento, vai garantir o roll back e garantindo que
 	// tudo volte ao normal.
 	
+	// OBS: A data é gravada no formato UTC. No Brasil, o valor do offset é de três horas a menos. Ou seja,
+	// se por acaso um registro de uma "entidade" for feito às 15h (Horário de Brasília), então, por exemplo,
+	// usando o software Postman, quando for realizar um GET desta entidade, vai mostrar que o horário será
+	// às 18h.
+	
+	
 	@Transactional  // Como o método abaixo é usado com requisição POST, então é bom usarmos ela.
 	public ParkingSpotModel save(ParkingSpotModel parkingSpotModel){
 		// TODO Auto-generated method stub
