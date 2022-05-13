@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -146,4 +147,39 @@ public class ParkingSpotController {
 		parkingSpotService.delete(parkingSpotModelOptional.get());
 		return ResponseEntity.status(HttpStatus.OK).body("Parking Spot deleted successfully.");
 	}
+	
+	@PutMapping("/{id}")  // Para realizar a atualização dos dados de um registro de ParkingSpotModel.
+	public ResponseEntity<Object> updateParkingSpot(@PathVariable(value = "id") UUID id,
+			                                        @RequestBody @Valid ParkingSpotDto parkingSpotDto){
+		
+		// OBS: O método updateParkingSpot poderá atualizar um ou mais atributos da model, exceto o
+		// o id e a data de criação do registro.
+		
+		Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+		if(!parkingSpotModelOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found");
+		}
+		
+		// Tem duas maneiras para atualizar esses dados da model.
+		
+		/**					Maneira Um
+			var parkingSpotModel = parkingSpotModelOptional.get();
+			parkingSpotModel.setParkingSpotNumber(parkingSpotDto.getParkingSpotNumber());
+			parkingSpotModel.setLicensePlateCar(parkingSpotDto.getLicensePlateCar());
+			parkingSpotModel.setModelCar(parkingSpotDto.getModelCar());
+			parkingSpotModel.setBrandCar(parkingSpotDto.getBrandCar());
+			parkingSpotModel.setColorCar(parkingSpotDto.getColorCar());
+			parkingSpotModel.setResponsibleName(parkingSpotDto.getResponsibleName());
+			parkingSpotModel.setApartment(parkingSpotDto.getApartment());
+			parkingSpotModel.setBlock(parkingSpotDto.getBlock());
+			return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.save(parkingSpotModel));
+		*/
+		// Segunda Maneira (usada aqui pela Michelli).
+		var parkingSpotModel = new ParkingSpotModel();
+		BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
+		parkingSpotModel.setId(parkingSpotModelOptional.get().getId());  // Mantendo o mesmo id, ou seja, o id não será atualizado.
+		parkingSpotModel.setRegistrationDate(parkingSpotModelOptional.get().getRegistrationDate()); // Mantendo a mesma Data do Registro.
+		return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.save(parkingSpotModel)); // Atualizando os Dados.
+	}
+	
 }
