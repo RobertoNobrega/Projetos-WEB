@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"  %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
@@ -35,7 +35,7 @@
 		</ul>
 		<h2>Deseja Sugerir um Filme na Locadora?</h2>
 		<h3>Abaixo, temos o nosso formulário de sugestão</h3>
-		<form action="pagina3.jsp" method="post">  <!-- Tag para declarar contrução de um formulário. Usaremos o método
+		<form action="pagina3.jsp" method="post">  <!-- Tag para declarar construção de um formulário. Usaremos o método
 		  POST, para enviar os dados para a pagina3.jsp, por meio de uso (neste caso) do Servidor de Aplicação. -->
 			<fieldset> <!--  Tag para Agrupamento de Elementos de um formulário. -->
 				<legend>Dados de Sugestão</legend>
