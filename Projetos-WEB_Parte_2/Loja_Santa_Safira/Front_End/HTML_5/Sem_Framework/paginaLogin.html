@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Página Login</title>
+        <style>
+            body{ /* Estilo CSS para a tag body. */
+                background-color: blueviolet;
+                color: white;
+            }
+        </style>
+        <script>
+            function exibirMensagem(){
+                mensagem.innerHTML = "Página de Login";
+            }
+            window.onload = exibirMensagem; // Carregando janela, para poder, em seguida, exibir a mensagem.
+        </script>
+    </head>
+    <body>
+        <h1>Loja Santa Safira</h1>
+        <p id="mensagem"> </p>
+        <form action="paginaCliente.html" method="post"> <!-- Para criar um formulário, é preciso usar a tag form.
+         Em action, coloca-se a página que será direcionada os dados que serão enviados, via método post. -->
+            <label for="usuário">Usuário</label>
+            <input type="text" name="usuário" id="usuário">
+            <br> <!-- Quebra de Linha. -->
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha">
+            <br> <!-- Quebra de Linha. -->
+            <input type="submit" value="Logar" name="logar" id="logar"> <!-- Botão, para realizar o Login do Sistema. -->
+        </form>
+    </body>
+</html>

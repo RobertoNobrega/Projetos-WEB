@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+    <!-- Loja de Pulseiras Artesanais. -->
     <head>
         <title>Loja Santa Safira</title>
         <meta charset="utf-8"/>
@@ -9,6 +10,29 @@
                 /* color:rgb(233, 227, 227);  */  /* Cor da Fonte Textual. */
                 background:blueviolet;
                 color:white;
+            }
+            /** Logo abaixo, teremos estilos para serem usados na criação de um "Menu de Itens Horizontal". */
+            ol{ /* Estilo para a tag ol. */
+                margin:0; /* Espaçamento Externo. */
+                padding:0; /* Espaçamento Interno. */
+            } 
+            li{ /* Estilo para a tag li (elemento de lista). */
+                list-style:none; /* Aqui, vai retirar os círculos vindos por padrão. */
+                display:inline-block; /* Vai fazer com que os elementos da lista fiquem todos na horizontal
+                (como se fizessem parte de uma mesma linha horizontal).
+                */
+            }
+            li a{ /* Estilo para a tag a, que está integrando a tag li.*/
+                text-decoration:none; /* Vai retirar a linha sublinhada. */
+                color:white; /* Cor para o Texto. */
+                background-color:blue; /* Cor para o Plano de Fundo de cada item. */
+                /* margin-bottom:1px; */
+                padding: 5px 15px; /* Espaço Interno, para cada botão. 5px será o espaçamento na vertical (cima e baixo)
+                , enquanto que 15px será o espaçamento horizontal (esquerda e direita). */
+                margin-left: -1px; /* "Distância" do lado esquerdo, de cada item de li. */
+            }
+            li a:hover{ /* Evento para o Cursor do Mouse, para a tag a, que faz parte da tag li. */
+                background-color: rgb(7, 7, 70);
             }
         </style>
         <script>
@@ -23,9 +47,11 @@
         <h1>Loja Santa Safira</h1>
         <p id="mensagem"> </p>
         <ol> <!-- Lista Ordenada (de itens). -->
-            <li><a href="paginaCatalogo.html" target="_blank">Catálogo</a></li>
-            <li><a href="paginaLoja.html" target="_blank">Sobre a Loja</a></li>
-            <li><a href="paginaFaleConosco.html" target="_blank">Fale Conosco</a></li>
+            <!-- <li><a href="paginaLogin.html" target="_blank">Login</a></li> -->
+            <li><a href="paginaLogin.html">Login</a></li>
+            <li><a href="paginaCatalogo.html">Catálogo</a></li>
+            <li><a href="paginaLoja.html">Sobre a Loja</a></li>
+            <li><a href="paginaFaleConosco.html">Fale Conosco</a></li>
         </ol>
     </body>
 </html>
